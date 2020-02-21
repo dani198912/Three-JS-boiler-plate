@@ -1,1 +1,0 @@
-const uniforms = {time: { value: 1.0 }};

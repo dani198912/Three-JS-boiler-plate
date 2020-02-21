@@ -1,20 +1,24 @@
 const fragmentShader = `
-
+#ifdef GL_ES
 precision mediump float;
 precision mediump int;
 
-uniform float time;
+#endif
 
-varying vec3 vPosition;
-varying vec4 vColor;
+uniform sampler2D u_texture;
+uniform vec2 u_textureFactor;
+uniform vec2 u_resolution;
 
-void main()	{
+varying vec2 vUv;
 
-    vec4 color = vec4( vColor );
-    color.r += sin( vPosition.x * 10.0 + time ) * 0.5;
 
-    gl_FragColor = color;
+vec2 centeredAspectRatio(vec2 uvs, vec2 factor){
+    return uvs * factor - factor /2. + 0.5;
+    }
 
+void main(){
+    vec3 color = texture2D(u_texture, vUv).xyz;
+    gl_FragColor = vec4(color, 1.0);
 }
 
 
