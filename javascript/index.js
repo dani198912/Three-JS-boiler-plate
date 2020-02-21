@@ -5,4 +5,18 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-var planGeometry = THREE.PLaneBufferGeometry
+var planeGeometry = new THREE.PlaneBufferGeometry(5, 5, 32);
+var material = new THREE.MeshBasicMaterial( {color: 0xffff00, side: THREE.DoubleSide} );
+var plane = new THREE.Mesh( planeGeometry, material );
+
+scene.add( plane );
+
+camera.position.z = 5;
+
+var animate = function () {
+    requestAnimationFrame( animate );
+
+    renderer.render( scene, camera );
+};
+
+animate();
