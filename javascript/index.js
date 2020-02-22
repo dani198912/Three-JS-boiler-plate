@@ -7,7 +7,7 @@ document.body.appendChild( renderer.domElement );
 console.log(renderer);
 var resolution = new THREE.Vector2(window.innerWidth, window.innerHeight);
 //Buffer Geometry
-var planeGeometry = new THREE.PlaneBufferGeometry(5, 5, 32, 32);
+var planeGeometry = new THREE.PlaneBufferGeometry(5,7.5, 32, 32);
 //Textures
 var factor = new THREE.Vector2(1.0, 1.0);
 var texture = new THREE.TextureLoader().load( 'https://images.unsplash.com/photo-1563192504-36ac622196dd' );
@@ -60,8 +60,8 @@ function animate () {
 
 function render() {
     var time  = performance.now();
-    plane.material.uniforms.time.value = time *0.01;
-    plane.rotation.x +=0.010;
+    // plane.material.uniforms.time.value = time * 0.01;
+    // plane.rotation.x +=0.010;
     renderer.render(scene, camera)
 }
 animate();

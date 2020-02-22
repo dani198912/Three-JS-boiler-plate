@@ -17,7 +17,7 @@ vec2 centeredAspectRatio(vec2 uvs, vec2 factor){
     }
 
 void main(){
-    vec3 color = texture2D(u_texture, vUv).xyz;
+    vec3 color = texture2D(u_texture, vec2(vUv.x, vUv.y)).xyz;
     gl_FragColor = vec4(color, 1.0);
 }
 
